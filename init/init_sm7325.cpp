@@ -56,11 +56,11 @@ void vendor_load_properties()
     }
 
     if (device.size() == 0) {
-        LOG(ERROR) << "Could not detect device, forcing a52sxq";
-        device = "a52sxq";
+        LOG(ERROR) << "Could not detect device, forcing a73xq";
+        device = "a73xq";
     }
 
-    name = device + "nsxx";
+    name = device + "xx";
 
     LOG(INFO) << "Found bootloader: %s", bootloader.c_str();
     LOG(INFO) << "Setting ro.product.model: %s", model.c_str();

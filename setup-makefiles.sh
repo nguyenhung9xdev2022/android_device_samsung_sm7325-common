@@ -27,7 +27,7 @@ source "${HELPER}"
 setup_vendor "${DEVICE_COMMON}" "${VENDOR}" "${ANDROID_ROOT}" true
 
 # Warning headers and guards
-write_headers "a52sxq m52xq"
+write_headers "a73xq m52xq"
 
 write_makefiles "${MY_DIR}/proprietary-files.txt" true
 
