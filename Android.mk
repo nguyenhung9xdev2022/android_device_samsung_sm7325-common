@@ -179,6 +179,16 @@ $(EGL_64_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 	@rm -rf $@
 	$(hide) ln -sf egl/$(notdir $@) $@
 
+WIFI_FIRMWARE_SYMLINKS := $(TARGET_OUT_VENDOR)/firmware
+$(WIFI_FIRMWARE_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
+	@echo "Creating wifi firmware symlinks: $@"
+	@mkdir -p $@/wlan/qca_cld/qca6750
+	@mkdir -p $@/wlan/qca_cld/wlan
+	$(hide) ln -sf /data/vendor/firmware/wlanmdsp.mbn $@/wlanmdsp.otaupdate
+	$(hide) ln -sf /mnt/vendor/persist/qca6750/wlan_mac.bin $@/wlan/qca_cld/qca6750/wlan_mac.bin
+	$(hide) ln -sf /mnt/vendor/persist/wlan/wlan_mac.bin $@/wlan/qca_cld/wlan/wlan_mac.bin
+	$(hide) ln -sf /vendor/etc/wifi/wlan/WCNSS_qcom_cfg.ini $@/wlan/qca_cld/wlan/WCNSS_qcom_cfg.ini
+	
 ALL_DEFAULT_INSTALLED_MODULES += \
     $(RFS_MSM_ADSP_SYMLINKS) \
     $(RFS_MSM_CDSP_SYMLINKS) \
@@ -191,6 +201,7 @@ ALL_DEFAULT_INSTALLED_MODULES += \
     $(RFS_MDM_TN_SYMLINKS) \
     $(RFS_APQ_GNSS_SYMLINKS) \
     $(EGL_32_SYMLINKS) \
-    $(EGL_64_SYMLINKS)
+    $(EGL_64_SYMLINKS) \
+    $(WIFI_FIRMWARE_SYMLINKS)
 
 endif
