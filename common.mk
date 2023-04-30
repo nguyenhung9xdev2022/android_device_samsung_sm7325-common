@@ -35,8 +35,6 @@ AB_OTA_UPDATER := false
 
 # Init files and fstab
 PRODUCT_PACKAGES += \
-    fstab.qcom \
-    fstab.qcom.ramdisk \
     fstab.ramplus \
     init.qcom.factory.rc \
     init.qcom.rc \
@@ -52,6 +50,11 @@ PRODUCT_PACKAGES += \
     init.target.rc \
     ueventd.qcom.rc
 
+
+PRODUCT_COPY_FILES += \
+    $(COMMON_PATH)/rootdir/etc/fstab.qcom:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.qcom \
+    $(COMMON_PATH)/rootdir/etc/fstab.qcom:$(TARGET_COPY_OUT_VENDOR)/etc/fstab.qcom
+    
 # Vendor scripts
 PRODUCT_PACKAGES += \
     init.class_main.sh \
